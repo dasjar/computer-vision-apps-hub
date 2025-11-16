@@ -3,192 +3,177 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dasjar – Computer Vision Apps Hub</title>
+<title>Victor Solomon – Computer Vision Applications</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --bg: #f5f6fa;
-    --text: #111;
-    --card-bg: rgba(255,255,255,0.7);
-    --border: rgba(0,0,0,0.1);
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --muted: #6b7280;
+    --bg: #fafafa;
+    --text: #1a1a1a;
+    --subtext: #555;
+    --card-bg: #ffffff;
+    --border: #e5e5e5;
+    --accent: #0a66c2;
   }
 
-  /* DARK MODE */
+  /* Dark Mode */
   [data-theme="dark"] {
-    --bg: #0d1117;
-    --text: #e2e8f0;
-    --card-bg: rgba(255,255,255,0.05);
-    --border: rgba(255,255,255,0.08);
-    --accent: #3b82f6;
-    --accent-hover: #1d4ed8;
-    --muted: #9ca3af;
+    --bg: #0e1117;
+    --text: #e6e6e6;
+    --subtext: #9ca3af;
+    --card-bg: #161b22;
+    --border: #30363d;
+    --accent: #58a6ff;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
   }
 
   body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    color: var(--text);
     background: var(--bg);
-    transition: background 0.3s ease, color 0.3s ease;
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.2s ease, color 0.2s ease;
   }
 
-  /* Hero Header */
+  /* Header */
   header {
-    padding: 60px 24px;
-    background: linear-gradient(135deg, #1e3a8a, #2563eb, #3b82f6);
+    padding: 40px 20px;
+    border-bottom: 1px solid var(--border);
     text-align: center;
-    color: white;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    position: relative;
   }
 
   header h1 {
-    font-size: 2.5rem;
-    margin: 0;
     font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 6px;
   }
 
   header p {
-    margin-top: 10px;
-    font-size: 1.1rem;
-    opacity: 0.92;
-    font-weight: 300;
+    font-size: 0.98rem;
+    color: var(--subtext);
   }
 
-  /* Dark Mode Toggle */
   #themeToggle {
     position: absolute;
-    top: 22px;
-    right: 22px;
-    padding: 8px 12px;
-    font-size: 0.85rem;
-    color: white;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.25);
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: 1px solid var(--border);
+    padding: 6px 10px;
     border-radius: 6px;
+    font-size: 0.8rem;
     cursor: pointer;
-    backdrop-filter: blur(6px);
+    color: var(--text);
   }
 
   #themeToggle:hover {
-    background: rgba(255,255,255,0.25);
+    background: var(--border);
   }
 
-  /* App Grid */
+  /* Grid Layout */
   .grid {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
     display: grid;
+    gap: 24px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 28px;
-    padding: 40px;
-    max-width: 1300px;
-    margin: 0 auto;
   }
 
-  /* Glassmorphism Cards */
+  /* Cards (Neutral, Professional) */
   .card {
     background: var(--card-bg);
-    padding: 24px;
-    border-radius: 18px;
     border: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 8px;
+    padding: 20px;
   }
 
   .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    border-color: var(--accent);
     cursor: pointer;
   }
 
   .card-tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    padding: 4px 10px;
-    border-radius: 6px;
-    background: var(--accent);
-    color: white;
-    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
     font-weight: 600;
     margin-bottom: 10px;
   }
 
-  .card-title {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
   .card-desc {
-    font-size: 0.95rem;
-    color: var(--muted);
-    margin-bottom: 20px;
-    line-height: 1.45rem;
+    font-size: 0.92rem;
+    color: var(--subtext);
+    margin-bottom: 18px;
   }
 
-  /* Buttons */
   .button-row {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
   }
 
+  .btn, .btn-outline {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+
   .btn {
     background: var(--accent);
     color: white;
-    padding: 10px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: background 0.2s;
   }
 
   .btn:hover {
-    background: var(--accent-hover);
+    background: #004e9e;
   }
 
   .btn-outline {
-    background: transparent;
     border: 1px solid var(--border);
     color: var(--text);
-    padding: 10px 16px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 0.9rem;
   }
 
   .btn-outline:hover {
-    background: rgba(0,0,0,0.06);
+    background: var(--border);
   }
 
   footer {
     text-align: center;
-    padding: 24px;
+    padding: 25px;
     font-size: 0.85rem;
-    color: var(--muted);
+    color: var(--subtext);
     border-top: 1px solid var(--border);
+    margin-top: 40px;
   }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <button id="themeToggle">🌙 Dark Mode</button>
-  <h1>Computer Vision Apps Hub</h1>
-  <p>Interactive browser-based tools by Victor Solomon (dasjar)</p>
+  <button id="themeToggle">Dark Mode</button>
+  <h1>Computer Vision Applications</h1>
+  <p>Interactive browser-based tools for Computer Vision by Victor Solomon</p>
 </header>
 
 <div class="grid">
 
-  <!-- App 1: Real-World Dimension Estimator -->
+  <!-- App 1 -->
   <div class="card" onclick="window.open('https://dasjar.github.io/realworld-dimension-estimator/', '_blank')">
     <div class="card-tag">Computer Vision</div>
     <div class="card-title">Real-World Dimension Estimator</div>
@@ -202,7 +187,7 @@
     </div>
   </div>
 
-  <!-- Future Apps -->
+  <!-- App Slot 2 -->
   <div class="card">
     <div class="card-tag">Coming Soon</div>
     <div class="card-title">App Slot 2</div>
@@ -215,6 +200,7 @@
     </div>
   </div>
 
+  <!-- App Slot 3 -->
   <div class="card">
     <div class="card-tag">Coming Soon</div>
     <div class="card-title">App Slot 3</div>
@@ -238,9 +224,9 @@
   const root = document.documentElement;
 
   toggleBtn.onclick = () => {
-    const isDark = root.getAttribute("data-theme") === "dark";
-    root.setAttribute("data-theme", isDark ? "light" : "dark");
-    toggleBtn.textContent = isDark ? "🌙 Dark Mode" : "☀️ Light Mode";
+    const dark = root.getAttribute("data-theme") === "dark";
+    root.setAttribute("data-theme", dark ? "light" : "dark");
+    toggleBtn.textContent = dark ? "Dark Mode" : "Light Mode";
   };
 </script>
 
